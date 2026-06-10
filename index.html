@@ -34,17 +34,6 @@
         </div>
     </div>
 
-    <div class="mb-6">
-        <button onclick="applyFixedTransactions()" class="flex items-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-emerald-700 transition shadow-lg">
-            <span>📋</span> Aplicar fixos do ciclo anterior
-        </button>
-    </div>
-
-    <div class="bg-white p-6 rounded-3xl shadow-sm mb-8 border flex flex-col items-center justify-center" style="height: 320px;">
-        <h3 class="font-bold text-sm mb-2 text-slate-800 w-full text-left">Distribuição de Gastos</h3>
-        <div class="relative w-full h-full flex items-center justify-center"><canvas id="categoryChart" style="max-height: 220px;"></canvas></div>
-    </div>
-
     <div class="bg-white rounded-3xl p-6 border shadow-sm mb-8">
         <h3 class="font-bold text-lg mb-4 text-slate-800" id="form-title">Nova Transação</h3>
         <form id="transaction-form" onsubmit="saveTransaction(event)" class="space-y-4">
@@ -64,8 +53,19 @@
             <button type="submit" class="w-full py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition">Guardar</button>
             <button type="button" onclick="resetForm()" id="cancel-btn" class="hidden w-full py-2 bg-slate-200 rounded-xl font-bold">Cancelar Edição</button>
         </form>
-        <label class="flex items-center gap-2 mt-6 cursor-pointer text-sm font-bold text-slate-600">
-            <input type="checkbox" id="filter-fixed" onchange="updateDashboard()" class="w-4 h-4"> Mostrar apenas Transações Fixas
+    </div>
+
+    <div class="bg-white p-6 rounded-3xl shadow-sm mb-8 border flex flex-col items-center justify-center" style="height: 320px;">
+        <h3 class="font-bold text-sm mb-2 text-slate-800 w-full text-left">Distribuição de Gastos</h3>
+        <div class="relative w-full h-full flex items-center justify-center"><canvas id="categoryChart" style="max-height: 220px;"></canvas></div>
+    </div>
+
+    <div class="mb-6 flex items-center gap-4">
+        <button onclick="applyFixedTransactions()" class="flex items-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-emerald-700 transition shadow-lg">
+            <span>📋</span> Aplicar fixos do ciclo anterior
+        </button>
+        <label class="flex items-center gap-2 cursor-pointer text-sm font-bold text-slate-600 bg-white px-4 py-3 rounded-full border shadow-sm">
+            <input type="checkbox" id="filter-fixed" onchange="updateDashboard()" class="w-4 h-4"> Mostrar apenas Transações Fixas 
         </label>
     </div>
 
@@ -73,7 +73,7 @@
 </main>
 
 <script>
-    const APP_VERSION = "1.0.0"; // Versão atual
+    const APP_VERSION = "1.0.3";
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzVePdMPV8vjYAiCfMrs9XAxeZ5iejZOIMdDLZXEOZbec2MYC_83TWfVYanPKqgxkmkGw/exec";
     let allTransactions = [];
     let cycleOffset = 0;
@@ -82,7 +82,7 @@
     document.getElementById('version-display').innerText = APP_VERSION;
 
     function checkAuth() {
-        if(document.getElementById('auth-pass').value === "180229") { // A SUA SENHA AQUI
+        if(document.getElementById('auth-pass').value === "180229") {
             document.getElementById('auth-screen').classList.add('hidden');
         } else { alert("Senha incorreta!"); }
     }
@@ -218,6 +218,6 @@
         fetchTransactions();
     };
 </script>
-    <! https://docs.google.com/spreadsheets/d/1rrgM3dF1oU-c7hD_rFFlICxIru67y8xtq4zcEVh8rWo/edit?gid=0#gid=0  gith hub financeiro canvas funcional> 
+<! https://docs.google.com/spreadsheets/d/1rrgM3dF1oU-c7hD_rFFlICxIru67y8xtq4zcEVh8rWo/edit?gid=0#gid=0  gith hub financeiro canvas funcional>
 </body>
 </html>
