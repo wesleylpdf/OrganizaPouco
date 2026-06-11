@@ -99,7 +99,7 @@
         }
 
         // VARIÁVEIS GLOBAIS
-        const APP_VERSION = "1.2.2";
+        const APP_VERSION = "1.2.3";
         const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzVePdMPV8vjYAiCfMrs9XAxeZ5iejZOIMdDLZXEOZbec2MYC_83TWfVYanPKqgxkmkGw/exec";
         let allTransactions = [];
         let cycleOffset = 0;
@@ -227,10 +227,10 @@
             document.getElementById('cancel-btn').classList.add('hidden');
         }
 
-        // RENDERIZA LISTA
+ // RENDERIZA LISTA (Invertido com .reverse())
         function renderList(transactions) {
             const container = document.getElementById('transaction-list-container');
-            container.innerHTML = transactions.map(t => `
+            container.innerHTML = [...transactions].reverse().map(t => `
                 <div class="p-4 bg-white border rounded-xl flex justify-between items-center shadow-sm dark:bg-slate-800 dark:border-slate-700">
                     <div>
                         <span class="block font-bold text-sm dark:text-white">${t.description} ${t.isFixed === "Sim" ? '📌' : ''}</span>
